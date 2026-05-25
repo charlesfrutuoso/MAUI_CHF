@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoAppMaui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label Text="Minha Lista de Tarefas" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry x:Name="taskEntry" Placeholder="Digite uma tarefa..." />
+            <Button Text="Adicionar" Clicked="OnAddTaskClicked" />
+
+            <!--#region CollectionView única com todas as tarefas-->
+            <!--<CollectionView x:Name="tasksCollection" SelectionMode="Single" SelectionChanged="OnTaskSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="Auto,*,Auto">
+                            --><!-- Checkbox na primeira coluna --><!--
+                            <CheckBox IsChecked="{Binding IsCompleted}" CheckedChanged="OnTaskCheckedChanged" VerticalOptions="Center" Grid.Column="0" />
+
+                            --><!-- Label na segunda coluna --><!--
+                            <Label Text="{Binding Name}" VerticalOptions="Center" Grid.Column="1" Margin="10,0,0,0">
+                                <Label.Triggers>
+                                    --><!-- Quando IsCompleted = true --><!--
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                        <Setter Property="TextColor" Value="Gray" />
+                                        <Setter Property="FontAttributes" Value="Italic" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            --><!-- Botão de excluir na terceira coluna --><!--
+                            <Button Text="Excluir" Grid.Column="2" Clicked="OnDeleteTaskClicked" CommandParameter="{Binding .}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>-->
+            <!--#endregion-->
+
+            <!-- Lista de pendentes -->
+            <Label Text="Pendentes" FontAttributes="Bold" Margin="0,20,0,10" />
+            <CollectionView x:Name="pendingTasksCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="Auto,*,Auto">
+                            <CheckBox IsChecked="{Binding IsCompleted}" CheckedChanged="OnTaskCheckedChanged" VerticalOptions="Center" Grid.Column="0" />
+                            <Label Text="{Binding Name}" VerticalOptions="Center" Grid.Column="1" Margin="10,0,0,0" />
+                            <Button Text="Excluir" Grid.Column="2" Clicked="OnDeleteTaskClicked" CommandParameter="{Binding .}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Lista de concluídas -->
+            <Label Text="Concluídas" FontAttributes="Bold" Margin="0,20,0,10" />
+            <CollectionView x:Name="completedTasksCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="Auto,*,Auto">
+                            <CheckBox IsChecked="{Binding IsCompleted}" CheckedChanged="OnTaskCheckedChanged" VerticalOptions="Center" Grid.Column="0" />
+                            <Label Text="{Binding Name}" VerticalOptions="Center" Grid.Column="1" Margin="10,0,0,0">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                        <Setter Property="TextColor" Value="Gray" />
+                                        <Setter Property="FontAttributes" Value="Italic" />
+                                        <Setter Property="TextDecorations" Value="Strikethrough" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Button Text="Excluir" Grid.Column="2" Clicked="OnDeleteTaskClicked" CommandParameter="{Binding .}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
