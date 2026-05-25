@@ -38,12 +38,66 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Numero da Sorte CHF</ApplicationTitle>
+	  <ApplicationId>br.com.charles.appnumerosorte</ApplicationId>
+	  <ApplicationIdGuid />
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" TintColor="#FFFFFF" />
+    
+    <MauiIcon Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'" 
+              Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appicon_android_fg.svg" ForegroundScale="0.7" TintColor="#FFFFFF" />
+    
+		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
+		<MauiIcon Include="Resources\AppIcon\appicon_android_fg.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#00AB37" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -54,6 +108,11 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
+	  <None Remove="Resources\AppIcon\appicon_android_fg.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
